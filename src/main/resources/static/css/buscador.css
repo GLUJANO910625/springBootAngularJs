@@ -1,0 +1,121 @@
+*{
+    font-family: "Century Gothic";
+}
+
+.cuadroBusqueda{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid #25275d;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th,
+.table > tfoot > tr > th, .table > thead > tr > td,
+.table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: 0px;
+}
+
+.table > thead > tr > th{
+    border-bottom: 0px;
+}
+
+.content_vertical{
+    margin: 0 auto;
+    font: 0/0 a;
+}
+
+.bg_logo{
+    background-color: #e6e6e6;
+    height: 150px;
+    width: 75px;
+    padding:5px;
+}
+
+.content_vertical:before{
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle; /* vertical alignment of the inline element */
+    height: 100%;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    background-color: #e27912;
+    border-color: #e27912;
+}
+
+
+.pagination > li > a, .pagination > li > span {
+    /*color: #337ab7;*/
+    color: #ffffff;
+    /*background-color: #fff;*/
+    background-color: #ff932d;
+    border: 1px solid #ff932d;
+}
+
+
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+    /*color: #777;*/
+    /*background-color: #fff;
+    border-color: #ddd;*/
+    color: #ffffff;
+    background-color: #ff932d;
+    border-color: #ff932d;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+    color: #23527c;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination{
+    float: right;
+}
+
+
+
+.gri{
+    background-color: #82afde;
+}
+
+.gri p:before{
+    content: "GRI";
+}
+
+.ceres{
+    background-color: #30498d;
+}
+
+.ceres p:before{
+    content: "CERES";
+}
+/*
+.m,.n,.o,.p,.q,.r{
+    background-color: #5279BC;
+}
+
+.m p:before,.n p:before,.o p:before,.p p:before,.q p:before,.r p:before{
+    content: "CERES";
+}
+
+.s,.t,.u,.v,.w,.x,.y,.z{
+    background-color: #cdcdcd;
+}
+
+.s p:before,.t p:before,.u p:before,.v p:before,.w p:before,.x p:before,.y p:before,.z p:before{
+    content: "SICAFF";
+}
+*/

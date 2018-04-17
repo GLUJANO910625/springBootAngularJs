@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link href='../lib/bootstrap/css/bootstrap.css' rel="stylesheet" type="text/css"/>
+    <link href='../css/buscador.css' rel="stylesheet" type="text/css"/>
+</head>
+<body ng-app="modBuscador" ng-controller="BuscadorCtrl">
+<div class="row">
+    <div class="col-md-12"></div>
+        <h3 class="text-center">Búsqueda Elasticsearceeh</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <form class="form-inline" name="frmBuscador">
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                <div class="col-md-3 col-xs-3 col-sm-3">
+                    <!--<div id="content_logo" class="col-md-3 col-xs-3 col-sm-3 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">-->
+                    <div class="content_vertical bg_logo">
+                            <img src="../images/logo_sia.png" class="img-responsive center-block" style="display: inline-block; vertical-align: middle;">
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-6 col-sm-6">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="text-center">BÚSQUEDA</h2>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-md-11 col-xs-11 col-sm-11" style="padding-right:0px;">
+                        <input ng-model="txtBuscar" uib-typeahead="address for address in getSearch($viewValue)"
+                               typeahead-loading="loadingLocations" typeahead-no-results="noResults"
+                               style="width:100% !important; line-height: 2; outline:0px;" type="text" class="cuadroBusqueda" id="searchText">
+                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                        <div ng-show="noResults">
+                            <i class="glyphicon glyphicon-remove"></i> No Results Found
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-xs-1 col-sm-1" style="padding-left:0px;">
+                        <button type="button" style="border-radius: 0; padding: 5px 12px; background-color: #ff932d; border-color:#e27912;" class="btn btn-primary" ng-click="buscarClick()">Buscar</button>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-3 col-sm-3">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="background-color: #f7f7f7;">
+        <div class="col-md-8 col-sm-8 col-xs-8 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" style="padding-left:35px;">
+            <h3>Resultados de la b&uacute;squeda</h3>
+            <table ng-table="tableResultados" class="table table-responsive" style="margin-left:10px;">
+                <tr ng-repeat="propiedad in $data">
+                    <td>
+                        <div class="media">
+                            <div class="media-left">
+                                <div style="width: 50px; height: 50px; text-align: center; border-radius: 5px;"
+                                     class="content_vertical {{propiedad.aplicacion}}">
+                                    <p style="display: inline-block; vertical-align: middle; width: 100%; margin: 0px; font-size: 12px; font-weight: bolder; color: #fff;"></p>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h5 style="font-weight: bolder;" class="media-heading">
+                                    <a href="#buscadorDetalle/{{propiedad.aplicacion}}/{{propiedad.aplicacion}}/{{propiedad.id}}" style="">{{propiedad.titulo}} {{propiedad.score}}</a>
+                                </h5>
+                                <p style="color: #25275d;" ng-bind-html="propiedad.fragmento"></p>
+                                <!--<p style="color: #25275d;" ng-bind-html="propiedad.contenido"></p>-->
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table ng-table="tablaEscolaridadParams" class="table table-bordered table-striped table-condensed table-responsive">
+                <tr ng-repeat="escolaridad in $data| filter: searchText">
+                    <td data-title="'Codigo'" class="col-md-1" id="tdCodigo{{escolaridad.codigo}}">{{escolaridad.codigo}}</td>
+                    <td data-title="'Nombre'" class="col-md-3">{{escolaridad.nombre}}</td>
+                    <td data-title="'Descripcion'" class="col-md-3">{{escolaridad.descripcion}}</td>
+                    <td data-title="'Status'" class="col-md-1 text-center">
+                    <span class="label label-info" ng-hide="escolaridad.requiereTitulo">si</span>
+                    <span class="label label-info" ng-show="escolaridad.requiereTitulo">no</span>
+                    </td>
+                    <td data-title="'Escolaridad'" class="col-md-1 text-center">
+                    <span class="label label-danger" ng-show="escolaridad.estado.codigo!='ACTIVO'">{{escolaridad.estado.salidaHtml}}</span>
+                    <span class="label label-success" ng-show="escolaridad.estado.codigo=='ACTIVO'">{{escolaridad.estado.salidaHtml}}</span>
+                    </td>
+                    <td data-title="'Fecha Registro'" class="col-md-1 text-center">{{escolaridad.fechaRegistro| date: 'dd/MM/yyyy'}}</td>
+                </tr>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../js/jquery/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/angular/angular.js"></script>
+<script type="text/javascript" src="../js/angular/angular-route.js"></script>
+<script type="text/javascript" src="../js/angular/angular-resource.js"></script>
+<script type="text/javascript" src="../js/angular/angular-sanitize.js"></script>
+<script type="text/javascript" src="../js/angular/angular-animate.js"></script>
+<script type="text/javascript" src="../js/angular/ui-bootstrap-tpls-1.3.3.js"></script>
+<script type="text/javascript" src="../js/angular/ng-table-1.0.0.b9/ng-table.min.js"></script>
+
+<script type="text/javascript" src="../js/services/escolaridadService.js"></script>
+
+<script type="text/javascript" src="../js/utils.js"></script>
+<script type="text/javascript" src="escolaridad.js"></script>
+<div ng-view onload="$openModalDialog()"></div>
+</body>
+</html>
