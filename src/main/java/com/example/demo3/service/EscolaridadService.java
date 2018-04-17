@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class EscolaridadService {
-
+//prueba cambio.
     @Autowired
     @Qualifier(value = "escolaridadDao")
     private EscolaridadDao escolaridadDao;
