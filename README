@@ -1,0 +1,56 @@
+-Descar el proyecto.
+  1.file/New/project from version control/Git
+  2.En la ventana de clone repository pegar la siguiente ruta de direccion git del proyecto.
+        -https://github.com/GLUJANO910625/springBootAngularJs.git
+        -elegir una ruta de carpeta de alojamiento del proyecto.
+        -clic en clone.
+
+  3.Configurar nuestro gestor de base de datos SqlServer con los siguientes requerimientos
+        -usuario(sa),password(sa) puerto de conexion 1433.
+        -BD(SPRINGBOOT),
+        -Tabla de BD se ejecutara con el siguiente archivo de sql server.
+                USE [SPRINGBOOT]
+                GO
+
+                /****** Object:  Table [dbo].[ESCOLARIDAD]    Script Date: 04/17/2018 17:12:46 ******/
+                SET ANSI_NULLS ON
+                GO
+
+                SET QUOTED_IDENTIFIER ON
+                GO
+
+                CREATE TABLE [dbo].[ESCOLARIDAD](
+                	[ESCOLARIDAD_ID] [bigint] IDENTITY(1,1) NOT NULL,
+                	[ESCOLARIDAD_CODIGO] [nvarchar](15) NOT NULL,
+                	[ESCOLARIDAD_NOMBRE] [nvarchar](150) NULL,
+                	[ESCOLARIDAD_DESCRIPCION] [nvarchar](150) NULL,
+                	[ESCOLARIDAD_REQUIERETITULO] [bit] NULL,
+                	[ESCOLARIDAD_FECHAREGISTRO] [datetime] NOT NULL,
+                 CONSTRAINT [PK_ESCOLARIDAD] PRIMARY KEY NONCLUSTERED
+                (
+                	[ESCOLARIDAD_ID] ASC
+                )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+                ) ON [PRIMARY]
+
+                GO
+
+        ---posteriormente se ocupara linquibase para automatizar este proceso.
+
+  --Configurar el proyecto su SDK JAVA version en la ventana de proyec estructure.
+  --ejecutar el run del proyecto para visualizarlo localmente entraran con la siguiente ruta.
+        -http://localhost:8080/escolaridad/escolaridad.html
+
+
+  links consultados:
+
+    http://localhost:8080/escolaridad/escolaridad.html
+    https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-introducing-spring-boot
+    https://developer.okta.com/blog/2017/12/04/basic-crud-angular-and-spring-boot
+    http://www.devglan.com/spring-boot/spring-boot-angular-example
+    https://patrickgrimard.io/2014/08/14/how-to-build-a-spring-boot-application-using-intellij-idea/  (Este link para armar el proyecto con intelle).
+    https://springframework.guru/configuring-spring-boot-for-microsoft-sql-server/   (Este link para configurar la base de datos en caso de no tener conocimiento).
+    https://www.concretepage.com/spring-boot/spring-boot-jersey-rest-jpa-hibernate-crud-example (Ejemplo de CRUD angular 5).
+    https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-jersey
+    https://gist.github.com/pveeckhout/8570701   (Ejemplo de github de como realizar un dao implement correctamente usado JPA.)
+    http://www.devglan.com/spring-boot/spring-data-jpa-example  (ejemplos de contraccion de metodos genericos en un dao imple).
+    http://www.devglan.com/spring-boot/spring-boot-angular-example   (Spring Boot y Angular 5).
