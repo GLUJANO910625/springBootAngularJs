@@ -8,33 +8,8 @@
   3.Configurar nuestro gestor de base de datos SqlServer con los siguientes requerimientos
         -usuario(sa),password(sa) puerto de conexion 1433.
         -BD(SPRINGBOOT),
-        -Tabla de BD se ejecutara con el siguiente archivo de sql server.
-                USE [SPRINGBOOT]
-                GO
 
-                /****** Object:  Table [dbo].[ESCOLARIDAD]    Script Date: 04/17/2018 17:12:46 ******/
-                SET ANSI_NULLS ON
-                GO
-
-                SET QUOTED_IDENTIFIER ON
-                GO
-
-                CREATE TABLE [dbo].[ESCOLARIDAD](
-                	[ESCOLARIDAD_ID] [bigint] IDENTITY(1,1) NOT NULL,
-                	[ESCOLARIDAD_CODIGO] [nvarchar](15) NOT NULL,
-                	[ESCOLARIDAD_NOMBRE] [nvarchar](150) NULL,
-                	[ESCOLARIDAD_DESCRIPCION] [nvarchar](150) NULL,
-                	[ESCOLARIDAD_REQUIERETITULO] [bit] NULL,
-                	[ESCOLARIDAD_FECHAREGISTRO] [datetime] NOT NULL,
-                 CONSTRAINT [PK_ESCOLARIDAD] PRIMARY KEY NONCLUSTERED
-                (
-                	[ESCOLARIDAD_ID] ASC
-                )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-                ) ON [PRIMARY]
-
-                GO
-
-        ---posteriormente se ocupara linquibase para automatizar este proceso.
+        ---Creacion de la tabla con linquibase.
 
   --Configurar el proyecto su SDK JAVA version en la ventana de proyec estructure.
   --ejecutar el run del proyecto para visualizarlo localmente entraran con la siguiente ruta.

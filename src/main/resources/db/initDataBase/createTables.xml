@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="glujano" id="1">
+        <createTable catalogName="SPRINGBOOT" schemaName="dbo" tableName="ESCOLARIDAD">
+            <column autoIncrement="true" name="ESCOLARIDAD_ID" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="PK_ESCOLARIDAD"/>
+            </column>
+            <column name="ESCOLARIDAD_CODIGO" type="nvarchar(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ESCOLARIDAD_NOMBRE" type="nvarchar(150)"/>
+            <column name="ESCOLARIDAD_DESCRIPCION" type="nvarchar(150)"/>
+            <column name="ESCOLARIDAD_REQUIERETITULO" type="bit"/>
+            <column name="ESCOLARIDAD_FECHAREGISTRO" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
