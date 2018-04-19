@@ -1,7 +1,9 @@
 package com.example.demo3.service;
 
+import com.ddlab.rnd.exception.BeanValidationFailedException;
 import com.example.demo3.Dao.EscolaridadDao;
 import com.example.demo3.model.Escolaridad;
+import org.hibernate.cfg.beanvalidation.BeanValidationEventListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,20 @@ public class EscolaridadService {
     @Autowired
     @Qualifier(value = "escolaridadDao")
     private EscolaridadDao escolaridadDao;
+
+    @Transactional
+    public void  save(Escolaridad escolaridad) throws Exception{
+        try {
+            escolaridad.setFechaRegistro(new Date());
+            escolaridadDao.save(escolaridad);
+
+        }catch (BeanValidationFailedException e){
+
+        }
+    }
+
+    /*@Transactional
+    public Escolaridad update()*/
 
  /*   @Transactional
     public void save(Escolaridad escolaridad)throws Exception{
