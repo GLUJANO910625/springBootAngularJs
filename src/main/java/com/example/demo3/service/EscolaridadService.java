@@ -22,6 +22,7 @@ public class EscolaridadService {
     @Qualifier(value = "escolaridadDao")
     private EscolaridadDao escolaridadDao;
 
+    //no se a subido el cambio del servicio
  /*   @Transactional
     public void save(Escolaridad escolaridad)throws Exception{
 
