@@ -28,6 +28,13 @@ public class genericDaoImp<T extends Serializable, PK extends Serializable> impl
         return t;
     }
 
+
+    @Override
+    public T update(T t) {
+        entityManager.persist(t);
+        return t;
+    }
+
     @Override
     public T findById(PK id) {
         return entityManager.find(entityClass, id);
