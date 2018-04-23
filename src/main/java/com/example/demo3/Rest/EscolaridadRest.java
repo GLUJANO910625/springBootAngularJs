@@ -17,6 +17,21 @@ public class EscolaridadRest {
     @Qualifier("escolaridadService")
     private EscolaridadService escolaridadService;
 
+    @POST
+    @Path("put")
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Escolaridad put(Escolaridad escolaridad)throws Exception{
+
+        if (escolaridad.getId()!=null){
+           // escolaridadService.update(escolaridad);
+        }else {
+            escolaridadService.save(escolaridad);
+        }
+
+        return escolaridad;
+    }
+
 /*
     @POST
     @Path("put")
