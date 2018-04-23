@@ -28,7 +28,7 @@ public class EscolaridadServiceTest {
 
 	@Test
 	public void testUpdate() throws Exception{
-		//prueba
+		//prueba  .
 		Escolaridad escolaridad = getEscolaridad();
 		escolaridadService.save(escolaridad);
 
