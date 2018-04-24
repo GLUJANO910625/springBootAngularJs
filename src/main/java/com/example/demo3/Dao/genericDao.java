@@ -14,5 +14,5 @@ public interface genericDao<T extends Serializable, PK extends Serializable> {
 
     public List<T> findAll(T t);
 
-    public void remove(T t);
+   /* public void remove(T t);*/
 }

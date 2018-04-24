@@ -61,7 +61,7 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
+	<!--	<dependency>
 			<groupId>com.ddlab.rnd.bean</groupId>
 			<artifactId>javaxbeanvalidation</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
@@ -70,7 +70,7 @@
 			<groupId>com.ddlab.rnd.bean</groupId>
 			<artifactId>javaxbeanvalidation</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 	<build>
