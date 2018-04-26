@@ -9,7 +9,7 @@
 <body ng-app="modBuscador" ng-controller="BuscadorCtrl">
 <div class="row">
     <div class="col-md-12"></div>
-        <h3 class="text-center">Búsqueda Elasticsearceeh</h3>
+        <h3 class="text-center">CRUD CON ANGULAR.JS</h3>
     </div>
 </div>
 <div class="row">
@@ -18,9 +18,9 @@
             <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                 <div class="col-md-3 col-xs-3 col-sm-3">
                     <!--<div id="content_logo" class="col-md-3 col-xs-3 col-sm-3 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">-->
-                    <div class="content_vertical bg_logo">
+                    <!--<div class="content_vertical bg_logo">
                             <img src="../images/logo_sia.png" class="img-responsive center-block" style="display: inline-block; vertical-align: middle;">
-                    </div>
+                    </div>-->
                 </div>
                 <div class="col-md-6 col-xs-6 col-sm-6">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="col-md-1 col-xs-1 col-sm-1" style="padding-left:0px;">
-                        <button type="button" style="border-radius: 0; padding: 5px 12px; background-color: #ff932d; border-color:#e27912;" class="btn btn-primary" ng-click="buscarClick()">Buscar</button>
+                        <button type="button" style="border-radius: 0; padding: 5px 12px; background-color: #2b542c; border-color:#e27912;" class="btn btn-success" ng-click="buscarClick()">Consultar</button>
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-3 col-sm-3">
@@ -48,9 +48,9 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="background-color: #f7f7f7;">
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="background-color: #b2dba1;">
         <div class="col-md-8 col-sm-8 col-xs-8 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" style="padding-left:35px;">
-            <h3>Resultados de la b&uacute;squeda</h3>
+            <h3>Lista de escolaridad</h3>
             <table ng-table="tableResultados" class="table table-responsive" style="margin-left:10px;">
                 <tr ng-repeat="propiedad in $data">
                     <td>
