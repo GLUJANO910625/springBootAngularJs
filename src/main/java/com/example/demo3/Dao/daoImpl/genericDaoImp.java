@@ -36,6 +36,15 @@ public class genericDaoImp<T extends Serializable, PK extends Serializable> impl
     }
 
     @Override
+    public T delete(PK id) {
+        T obj = entityManager.find(entityClass, id);
+        if(obj != null){
+            entityManager.remove(obj);
+        }
+        return obj;
+    }
+
+    @Override
     public T findById(PK id) {
         return entityManager.find(entityClass, id);
     }

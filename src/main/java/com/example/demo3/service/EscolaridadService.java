@@ -3,6 +3,7 @@ package com.example.demo3.service;
 /*import com.ddlab.rnd.exception.BeanValidationFailedException;*/
 import com.example.demo3.Dao.EscolaridadDao;
 import com.example.demo3.model.Escolaridad;
+import liquibase.snapshot.EmptyDatabaseSnapshot;
 import org.hibernate.cfg.beanvalidation.BeanValidationEventListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -64,6 +65,24 @@ public class EscolaridadService {
         }*/
     }
 
+    /**
+     * Metodo para la eliminacion de objetos de la base de datos invocando servicio de Jpa.
+     * @param escolaridad
+     * @return
+     */
+    @Transactional
+    public Escolaridad delete(Escolaridad escolaridad)throws Exception{
+
+        Escolaridad escolaridadEliminar = this.getById(escolaridad.getId());
+
+        if(escolaridadEliminar.getId() != null){
+            escolaridadDao.delete(escolaridadEliminar.getId());
+
+        }else{
+            throw new Exception("El registro no se encontro");
+        }
+        return null;
+    }
 
     public Escolaridad getById(Long id){
         return (Escolaridad) escolaridadDao.findById(id);

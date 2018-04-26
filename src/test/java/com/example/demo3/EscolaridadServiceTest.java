@@ -23,7 +23,7 @@ public class EscolaridadServiceTest {
 	public void  testSave() throws Exception{
 		Escolaridad escolaridad = getEscolaridad();
 		escolaridadService.save(escolaridad);
-
+		escolaridadService.delete(escolaridad);
 	}
 
 	@Test
@@ -37,6 +37,8 @@ public class EscolaridadServiceTest {
 
 		Escolaridad escolaridadUpdate = escolaridadService.getById(escolaridad.getId());
 		assert escolaridadUpdate.getDescripcion().trim().equals("Secundaria") : "El m\u00e9todo update no gener\u00f3 el cambio solicitado";
+		escolaridadService.delete(escolaridadUpdate);
+
 
 	}
 
