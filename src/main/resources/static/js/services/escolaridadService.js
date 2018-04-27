@@ -21,21 +21,12 @@ angular.module("modBuscadorService",["ngResource"])
                     }
                     ,isArray: true
                 },
-                searchTypeHead: {
-                    method: "POST"
+                delete:{
+                    method:"POST"
                     ,params:{
-                        methodName: "searchTypeHead"
-                        , buscar: "@buscar"
-                    }
-                    ,isArray: true
-                },
-                getId: {
-                    method: "POST"
-                    ,params:{
-                        methodName: "getId"
-                        , buscar: "@id"
-                    }
-                    ,isArray: true
+                        methodName:"delete",
+                    escolaridad:"@escolaridad"
+                }
                 }
             });
         }]);

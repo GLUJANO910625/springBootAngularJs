@@ -6,6 +6,7 @@ angular.module("modBuscador", ["ngRoute", "ngSanitize", "modBuscadorService",
     "ngTable", "ui.bootstrap", "ngAnimate", "modUtils"])
     .controller("BuscadorCtrl", function ($scope, $rootScope, $filter, EscolaridadRest, ngTableParams) {
         $scope.txtBuscar = undefined;
+
         $scope.buscarClick = function () {
             $scope.listaPropiedades = EscolaridadRest.list({}, function (response) {
                 $scope.tablaEscolaridadParams = new ngTableParams(
@@ -24,4 +25,12 @@ angular.module("modBuscador", ["ngRoute", "ngSanitize", "modBuscadorService",
                     });
             });
         };
+
+        $scope.eliminar = function () {
+
+        };
+
+        $scope.editar = function () {
+
+        }
     });

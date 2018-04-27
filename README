@@ -16,7 +16,7 @@
         -http://localhost:8080/escolaridad/escolaridad.html
 
 
-  links consultados:
+  links consultados:..
 
     http://localhost:8080/escolaridad/escolaridad.html
     https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-introducing-spring-boot
@@ -29,3 +29,5 @@
     https://gist.github.com/pveeckhout/8570701   (Ejemplo de github de como realizar un dao implement correctamente usado JPA.)
     http://www.devglan.com/spring-boot/spring-data-jpa-example  (ejemplos de contraccion de metodos genericos en un dao imple).
     http://www.devglan.com/spring-boot/spring-boot-angular-example   (Spring Boot y Angular 5).
+    http://www.liquibase.org/   (linquibase).
+    https://medium.com/@harittweets/evolving-your-database-using-spring-boot-and-liquibase-844fcd7931da   (Configuraciones de linquibase a un proyecto).

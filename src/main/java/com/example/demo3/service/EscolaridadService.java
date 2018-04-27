@@ -1,7 +1,10 @@
 package com.example.demo3.service;
 
+/*import com.ddlab.rnd.exception.BeanValidationFailedException;*/
 import com.example.demo3.Dao.EscolaridadDao;
 import com.example.demo3.model.Escolaridad;
+import liquibase.snapshot.EmptyDatabaseSnapshot;
+import org.hibernate.cfg.beanvalidation.BeanValidationEventListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -22,73 +25,68 @@ public class EscolaridadService {
     @Qualifier(value = "escolaridadDao")
     private EscolaridadDao escolaridadDao;
 
-    //no se a subido el cambio del servicio
- /*   @Transactional
-    public void save(Escolaridad escolaridad)throws Exception{
-
+    @Transactional
+    public void save(Escolaridad escolaridad) throws Exception{
+        /*try {*/
             escolaridad.setFechaRegistro(new Date());
             escolaridadDao.save(escolaridad);
 
+        /*}catch (BeanValidationFailedException e){
+
+        }*/
     }
 
     @Transactional
-    public void update(Escolaridad escolaridad)throws Exception{
-
+    public void update(Escolaridad escolaridad) throws Exception{
+        /*try {*/
             Escolaridad escolaridadOriginal = this.getById(escolaridad.getId());
 
-            //validacion si se quiere actualizar el ID se cancela la operación
+            if (escolaridad.getFechaRegistro() != null) {
+
+                String escolaridadActual = new SimpleDateFormat("yyyy-MM-dd").format(escolaridad.getFechaRegistro());
+                String originalescolaridadFecha = new SimpleDateFormat("yyyy-MM-dd").format(escolaridadOriginal.getFechaRegistro());
+                if (!originalescolaridadFecha.equals(escolaridadActual)) {
+
+                    throw new Exception("Fecha Registro no se puede Actualizar.");
+                }
+            }
+
             if (!escolaridad.getId().equals(escolaridadOriginal.getId())) {
                 throw new Exception("Id no se puede actualizar");
             }
 
-            if (escolaridad.getFechaRegistro() != null) {
-                String escolaridadFecha = new SimpleDateFormat("yyyy-MM-dd").format(escolaridad.getFechaRegistro());
-                String originalEscolaridadFecha = new SimpleDateFormat("yyyy-MM-dd").format(escolaridadOriginal.getFechaRegistro());
-                if (!escolaridadFecha.equals(originalEscolaridadFecha)) {
-                    throw new Exception("FechaRegistro no se puede actualizar.");
-                }
-            }
-
-
-            escolaridadOriginal.setCodigo(escolaridad.getCodigo());
-            escolaridadOriginal.setDescripcion(escolaridad.getDescripcion());
             escolaridadOriginal.setNombre(escolaridad.getNombre());
-            escolaridadOriginal.setRequiereTitulo(escolaridad.getRequiereTitulo());
-
+            escolaridadOriginal.setDescripcion(escolaridad.getDescripcion());
             escolaridadDao.update(escolaridadOriginal);
 
+
+        /*}catch (BeanValidationFailedException e){
+
+        }*/
     }
+
+    /**
+     * Metodo para la eliminacion de objetos de la base de datos invocando servicio de Jpa.
+     * @param escolaridad
+     * @return
+     */
     @Transactional
-    public void delete(Escolaridad escolaridad)throws Exception{
+    public Escolaridad delete(Escolaridad escolaridad)throws Exception{
 
-            Escolaridad escolaridadEliminar = this.getById(escolaridad.getId());
+        Escolaridad escolaridadEliminar = this.getById(escolaridad.getId());
 
-            if (escolaridadEliminar.getId() == null){
-                throw new Exception("El registro del Especialidad no se encontro.");
-            }
+        if(escolaridadEliminar.getId() != null){
+            escolaridadDao.delete(escolaridadEliminar.getId());
 
-            escolaridadDao.delete(escolaridadEliminar);
-
+        }else{
+            throw new Exception("El registro no se encontro");
+        }
+        return null;
     }
 
     public Escolaridad getById(Long id){
-        return (Escolaridad) escolaridadDao.getById(Escolaridad.class, id);
-    }*/
-
-/*
-    public List<Escolaridad> getList(Escolaridad escolaridad){
-        Escolaridad escolaridad1 = new Escolaridad();
-        escolaridad1.setCodigo("ESC001");
-
-        List<Escolaridad> escolaridadList = new ArrayList<>();
-        List<Serializable> serializableList = this.escolaridadDao.list(escolaridad1);
-
-        for (Serializable serializable : serializableList) {
-            escolaridadList.add((Escolaridad) serializable);
-        }
-        return escolaridadList;
+        return (Escolaridad) escolaridadDao.findById(id);
     }
-*/
 
     public List<Escolaridad> getList() {
         Escolaridad escolaridad = new Escolaridad();
