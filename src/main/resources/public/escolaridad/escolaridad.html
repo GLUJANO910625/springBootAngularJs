@@ -6,7 +6,7 @@
     <link href='../lib/bootstrap/css/bootstrap.css' rel="stylesheet" type="text/css"/>
     <link href='../css/buscador.css' rel="stylesheet" type="text/css"/>
 </head>
-<body ng-app="modBuscador" ng-controller="BuscadorCtrl">
+<body ng-app="modBuscador" ng-controller="BuscadorCtrl" ng-init="buscarClick()">
 <div class="row">
     <div class="col-md-12"></div>
         <h3 class="text-center">CRUD CON ANGULAR.JS</h3>
@@ -75,6 +75,16 @@
 
             <table ng-table="tablaEscolaridadParams" class="table table-bordered table-striped table-condensed table-responsive">
                 <tr ng-repeat="escolaridad in $data| filter: searchText">
+                    <td>
+                        <div class="brn-group pull-right">
+                            <button class="btn btn-default"  ng-click="eliminar()">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <button class="btn btn-primary"  ng-click="editar()">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                        </div>
+                    </td>
                     <td data-title="'Codigo'" class="col-md-1" id="tdCodigo{{escolaridad.codigo}}">{{escolaridad.codigo}}</td>
                     <td data-title="'Nombre'" class="col-md-3">{{escolaridad.nombre}}</td>
                     <td data-title="'Descripcion'" class="col-md-3">{{escolaridad.descripcion}}</td>
