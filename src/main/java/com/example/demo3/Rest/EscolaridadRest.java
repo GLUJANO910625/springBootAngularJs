@@ -23,8 +23,8 @@ public class EscolaridadRest {
     @Consumes("application/json")
     public Escolaridad put(Escolaridad escolaridad)throws Exception{
 
-        if (escolaridad.getId()!=null){
-           // escolaridadService.update(escolaridad);
+        if (escolaridad.getId()!= null){
+            escolaridadService.update(escolaridad);
         }else {
             escolaridadService.save(escolaridad);
         }
@@ -55,7 +55,7 @@ public class EscolaridadRest {
     public Escolaridad delete(Escolaridad escolaridad)throws Exception{
         escolaridadService.delete(escolaridad);
         return escolaridad;
-    }
+    }*/
 
     @GET
     @Path("id")
@@ -63,7 +63,7 @@ public class EscolaridadRest {
     public Escolaridad byId (@QueryParam("id") Long id) throws Exception{
         return escolaridadService.getById(id);
     }
-*/
+
 
     @POST
     @Path("list")

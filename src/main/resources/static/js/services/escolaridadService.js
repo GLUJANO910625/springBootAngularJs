@@ -6,6 +6,14 @@ angular.module("modBuscadorService",["ngResource"])
     .factory("EscolaridadRest", ["$resource",
         function($resource){
             return $resource("../Rest/escolaridad/:methodName", {}, {
+                put: {
+                    method:"POST"
+                    ,params:{
+                        methodName:"put"
+                        ,escolaridad:"@especialidad"
+                    }
+                    ,isArray: false
+                },
                 list: {
                     method: "POST"
                     ,params: {
@@ -26,7 +34,15 @@ angular.module("modBuscadorService",["ngResource"])
                     ,params:{
                         methodName:"delete",
                     escolaridad:"@escolaridad"
-                }
+                    }
+                },
+                id: {
+                    method:"GET"
+                    ,params:{
+                        methodName:"id"
+                        ,id:"id"
+                    }
+                    ,isArray: false
                 }
             });
         }]);

@@ -3,12 +3,12 @@
  */
 
 angular.module("modBuscador", ["ngRoute", "ngSanitize", "modBuscadorService",
-    "ngTable", "ui.bootstrap", "ngAnimate", "modUtils"])
-    .controller("BuscadorCtrl", function ($scope, $rootScope, $filter, EscolaridadRest, ngTableParams) {
+    "ngTable", "ui.bootstrap", "ngAnimate", "modUtils", "modAlert"])
+    .controller("BuscadorCtrl", function ($scope, $rootScope, $filter, EscolaridadRest, ngTableParams, $alert) {
         $scope.txtBuscar = undefined;
 
         $scope.buscarClick = function () {
-            $scope.listaPropiedades = EscolaridadRest.list({}, function (response) {
+            $scope.listaEscolaridad = EscolaridadRest.list({}, function (response) {
                 $scope.tablaEscolaridadParams = new ngTableParams(
                     {
                         page: 1,
@@ -26,11 +26,39 @@ angular.module("modBuscador", ["ngRoute", "ngSanitize", "modBuscadorService",
             });
         };
 
-        $scope.eliminar = function () {
+        $rootScope.$on("reloadEscolaridad", function () {
+            $scope.listaEscolaridad = EscolaridadRest.list({}, function () {
+                $scope.tablaEscolaridadParams.reload();
+            });
+        });
 
+        //Edición
+        $scope.edicionEscolaridad = function (escolaridad) {
+            EscolaridadRest.id({id:escolaridad.id}, function (response) {
+                $scope.escolaridad = response;
+                $('#escolaridadEdicion').modal('show');
+            });
         };
 
-        $scope.editar = function () {
+        $scope.abrirModalAgregar = function () {
+            $('#escolaridadEdicion').modal('show');
+        };
 
+        $scope.submitForm = function () {
+            EscolaridadRest.put($scope.escolaridad,function(){
+                if ($scope.escolaridad.id) {
+                    console.log('Se Guardo');
+                    $alert.success("Actualizaci&oacute;n","La escolaridad se actualiz\u00f3 correctamente.");
+                } else {
+                    console.log('No se Guardo');
+                    $alert.success("Guardado","La nueva escolaridad se ha guardado correctamente.");
+                }
+                $scope.escolaridad = {};
+                $('#escolaridadEdicion').modal('hide');
+                $rootScope.$broadcast("reloadEscolaridad");
+            },function(error){
+                console.log('Error')
+                $alert.danger("ERROR: " + error.data.message + " ESTATUS: " + error.statusText);
+            });
         }
     });
