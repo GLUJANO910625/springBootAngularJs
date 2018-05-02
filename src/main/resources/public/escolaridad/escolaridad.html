@@ -149,15 +149,15 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="txtCodigo"><strong>Código: *</strong></label>
-                                <input type="text" class="form-control" id="txtCodigo" name="txtCodigo" ng-disabled="escolaridad.id"
+                                <label for="txtCodigo"><strong>Código:*</strong></label>
+                                <input type="text" class="form-control" id="txtCodigo" name="txtCodigo" ng-disabled="escolaridad.id" maxlength="15" required="true"
                                        ng-model="escolaridad.codigo" placeholder="Código"/>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label for="txtNombre"><strong>Nombre: *</strong></label>
-                                <input type="text" class="form-control" id="txtNombre" name="txtNombre"
+                                <label for="txtNombre"><strong>Nombre:*</strong></label>
+                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" maxlength="150" required="true"
                                        ng-model="escolaridad.nombre" placeholder="Nombre"/>
                             </div>
                         </div>
@@ -165,8 +165,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="txtDescripcion"><strong>Descripción:</strong></label>
-                                <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion"
+                                <label for="txtDescripcion"><strong>Descripción:*</strong></label>
+                                <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion" maxlength="150" required="Campo requerido"
                                        ng-model="escolaridad.descripcion" placeholder="Descripción"/>
                             </div>
                         </div>
