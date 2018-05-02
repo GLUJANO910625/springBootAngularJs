@@ -21,7 +21,6 @@ angular.module("modEscolaridadEdicion", ["ngRoute", "ngSanitize",
                 $('#escolaridadEdicion').modal('hide');
                 $rootScope.$broadcast("reloadEscolaridad");
             },function(error){
-                console.log('Error')
                 $alert.danger("ERROR: " + error.data.message + " ESTATUS: " + error.statusText);
             });
         }
