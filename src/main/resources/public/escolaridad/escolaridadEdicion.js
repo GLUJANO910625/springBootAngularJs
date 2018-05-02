@@ -1,5 +1,5 @@
 angular.module("modEscolaridadEdicion", ["ngRoute", "ngSanitize",
-    "ngTable", "ui.bootstrap", "ngAnimate", "modUtils"])
+    "ngTable", "ui.bootstrap", "ngAnimate", "modUtils","modBuscadorService"])
     .controller("EscolaridadEdicionCtrl", function ($scope,$location,EscolaridadRest) {
         $('#dlgEscolaridadEdicion').on('hidden.bs.modal', function () {
             //Redirigir a la url raiz.
