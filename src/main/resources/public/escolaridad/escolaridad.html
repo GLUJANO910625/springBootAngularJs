@@ -5,23 +5,14 @@
     <title>Title</title>
     <link href='../lib/bootstrap/css/bootstrap.css' rel="stylesheet" type="text/css"/>
     <link href='../css/buscador.css' rel="stylesheet" type="text/css"/>
-    <link href='../css/buscador.css' rel="stylesheet" type="text/css"/>
 </head>
 <body ng-app="modBuscador" ng-controller="BuscadorCtrl" ng-init="buscarClick()">
 <div class="row">
     <div class="col-md-12"></div>
         <h3 class="text-center">CRUD CON ANGULAR.JS</h3>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a id="aNuevaEscolaridad" ng-click="abrirModalAgregar()" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span>
-                    Agregar
-                </a>
-            </li>
-        </ul>
-    </div>
 </div>
+
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <form class="form-inline" name="frmBuscador">
@@ -33,6 +24,12 @@
                     </div>-->
                 </div>
                 <div class="col-md-6 col-xs-6 col-sm-6">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a  href="#escolaridadEdicion"><span
+                                    class="glyphicon glyphicon-plus"></span>Alta de escolaridad</a></li>
+                        </ul>
+                    </div>
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <h2 class="text-center">BÚSQUEDA</h2>
                     </div>
@@ -124,72 +121,15 @@
 <script type="text/javascript" src="../js/angular/angular-animate.js"></script>
 <script type="text/javascript" src="../js/angular/ui-bootstrap-tpls-1.3.3.js"></script>
 <script type="text/javascript" src="../js/angular/ng-table-1.0.0.b9/ng-table.min.js"></script>
-<script type="text/javascript" src="../lib/direcctivas/js/alert.js"></script>
-<script type="text/javascript" src="../lib/direcctivas/js/SmartNotification.min.js"></script>
+<!--<script type="text/javascript" src="../lib/direcctivas/js/alert.js"></script>
+<script type="text/javascript" src="../lib/direcctivas/js/SmartNotification.min.js"></script>-->
 
 <script type="text/javascript" src="../js/services/escolaridadService.js"></script>
 
 <script type="text/javascript" src="../js/utils.js"></script>
 <script type="text/javascript" src="escolaridad.js"></script>
+<script type="text/javascript" src="escolaridadEdicion.js"></script>
+<!--<div ng-view onload="$openModalDialog()"></div>-->
 <div ng-view onload="$openModalDialog()"></div>
 </body>
-
-<!--Modal Edicion-->
-<div class="modal fade" role="dialog" id="escolaridadEdicion" aria-labelledby="myModalLabel" aria-hidden="true"
-     data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" ng-show="escolaridad.id">Editar Escolaridad</h4>
-                <h4 class="modal-title" ng-hide="escolaridad.id">Nueva Escolaridad</h4>
-            </div>
-            <form id="frmEscolaridad" name="frmEscolaridad" novalidate role="form"  ng-validate="validationOptions">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="txtCodigo"><strong>Código:*</strong></label>
-                                <input type="text" class="form-control" id="txtCodigo" name="txtCodigo" ng-disabled="escolaridad.id" maxlength="15" required="true"
-                                       ng-model="escolaridad.codigo" placeholder="Código"/>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label for="txtNombre"><strong>Nombre:*</strong></label>
-                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" maxlength="150" required="true"
-                                       ng-model="escolaridad.nombre" placeholder="Nombre"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="txtDescripcion"><strong>Descripción:*</strong></label>
-                                <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion" maxlength="150" required="Campo requerido"
-                                       ng-model="escolaridad.descripcion" placeholder="Descripción"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <div class="form-group">
-                                    <label for="txtTitulo">Requiere Titulo: </label>
-                                    <input type="checkbox"  id="txtTitulo" name="txtTitulo" class="checkbox-danger" ng-model="escolaridad.requiereTitulo">
-                                    <span ng-show="escolaridad.requiereTitulo">Si</span>
-                                    <span ng-hide="escolaridad.requiereTitulo"><strong>No</strong></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" ng-click="submitForm()">Guardar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 </html>

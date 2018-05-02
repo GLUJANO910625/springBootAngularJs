@@ -8,7 +8,7 @@ angular.module("modUtils", ["ngSanitize"])
             var path = $location.path();
             if (path !== "/") {
                 var token = path.split("/")[1];
-                var selector = "#mdl".concat(token[0].toUpperCase().concat(token.substr(1)));
+                var selector = "#dlg".concat(token[0].toUpperCase().concat(token.substr(1)));
 
                 if (openModal == undefined || openModal == null) {
                     openModal = true;
