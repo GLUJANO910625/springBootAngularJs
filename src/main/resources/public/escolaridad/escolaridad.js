@@ -8,8 +8,9 @@ angular.module("modBuscador", ["ngRoute", "ngSanitize", "modBuscadorService",
         $scope.txtBuscar = undefined;
 
         $scope.buscarClick = function () {
-            $scope.listaEscolaridad = EscolaridadRest.list({}, function (response) {
-                $scope.tablaEscolaridadParams = new ngTableParams(
+            EscolaridadRest.list({}, function (response) {
+                $scope.listaEscolaridad = response;
+                    $scope.tablaEscolaridadParams = new ngTableParams(
                     {
                         page: 1,
                         count: 10
@@ -18,7 +19,7 @@ angular.module("modBuscador", ["ngRoute", "ngSanitize", "modBuscadorService",
                         counts: [],
                         total: 0
                         , getData: function ($defer, params) {
-                        var data = response;
+                        var data = $scope.listaEscolaridad;
                         params.total(data.length);
                         $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                     }
@@ -26,19 +27,23 @@ angular.module("modBuscador", ["ngRoute", "ngSanitize", "modBuscadorService",
             });
         };
 
-        $scope.eliminar = function () {
+        $rootScope.$on("reloadEscolaridad", function () {
+            EscolaridadRest.list({}, function (response) {
+                $scope.listaEscolaridad = response;
+                $scope.tablaEscolaridadParams.reload();
+            });
+        });
 
-        };
-
-        $scope.editar = function () {
-
-        }
     })
     .config(["$routeProvider", function ($routeProvider) {
-    $routeProvider.when("/escolaridadEdicion", {
-        controller: "EscolaridadEdicionCtrl"
-        , templateUrl: "escolaridadEdicion.html"
-    });
+        $routeProvider.when("/escolaridadEdicion", {
+            controller: "EscolaridadEdicionCtrl"
+            , templateUrl: "escolaridadEdicion.html"
+        });
+        $routeProvider.when("/escolaridadEdicion/:id", {
+            controller: "EscolaridadEdicionCtrl"
+            , templateUrl: "escolaridadEdicion.html"
+        });
     $routeProvider.otherwise({redirectTo: "/"});
 
 }]);

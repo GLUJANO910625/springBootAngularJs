@@ -27,7 +27,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a  href="#escolaridadEdicion"><span
-                                    class="glyphicon glyphicon-plus"></span>Alta de escolaridad</a></li>
+                                    class="glyphicon glyphicon-plus"></span>Nueva escolaridad</a></li>
                         </ul>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -82,15 +82,34 @@
 
             <table ng-table="tablaEscolaridadParams" class="table table-bordered table-striped table-condensed table-responsive">
                 <tr ng-repeat="escolaridad in $data| filter: searchText">
-                    <td>
-                        <div class="brn-group pull-right">
+                    <td data-title="" class="col-md-1 text-center">
+                        <!--MENU DE BOTONES-->
+                        <div class="dropdown">
+                            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span class="glyphicon glyphicon-list"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-left" >
+                                <li class="dropdown-header" style="background-color: #A9CCE3"><strong>Escolaridad</strong></li>
+                                <li>
+                                    <a href="#escolaridadEdicion/{{escolaridad.id}}" data-toggle="modal" data-target="#dlg"><span class="glyphicon glyphicon-pencil info"></span>
+                                        Editar
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" ng-click="eliminar(escolaridad)"><span class="glyphicon glyphicon-remove"></span>
+                                        Eliminar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--<div class="brn-group pull-right">
                             <button class="btn btn-default"  ng-click="eliminar(escolaridad)">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </button>
-                            <button class="btn btn-primary"  ng-click="edicionEscolaridad(escolaridad)">
+                            <button class="btn btn-primary" href="#escolaridadEdicion/{{escolaridad.id}}" data-toggle="modal" data-target="#dlg">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </button>
-                        </div>
+                        </div>-->
                     </td>
                     <td data-title="'Codigo'" class="col-md-1" id="tdCodigo{{escolaridad.codigo}}">{{escolaridad.codigo}}</td>
                     <td data-title="'Nombre'" class="col-md-3">{{escolaridad.nombre}}</td>
@@ -122,7 +141,8 @@
 <script type="text/javascript" src="../js/angular/ui-bootstrap-tpls-1.3.3.js"></script>
 <script type="text/javascript" src="../js/angular/ng-table-1.0.0.b9/ng-table.min.js"></script>
 <!--<script type="text/javascript" src="../lib/direcctivas/js/alert.js"></script>
-<script type="text/javascript" src="../lib/direcctivas/js/SmartNotification.min.js"></script>-->
+<script type="text/javascript" src="../lib/angularJS/angular-validate.js"></script>-->
+<!--<script type="text/javascript" src="../lib/direcctivas/js/SmartNotification.min.js"></script>-->
 
 <script type="text/javascript" src="../js/services/escolaridadService.js"></script>
 
