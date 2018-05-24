@@ -7,7 +7,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <changeSet author="glujano" id="1">
-        <createTable catalogName="SPRINGBOOT" schemaName="dbo" tableName="ESCOLARIDAD">
+        <createTable catalogName="SPRINGBOOT"  tableName="ESCOLARIDAD">
             <column autoIncrement="true" name="ESCOLARIDAD_ID" type="bigint">
                 <constraints primaryKey="true" primaryKeyName="PK_ESCOLARIDAD"/>
             </column>
